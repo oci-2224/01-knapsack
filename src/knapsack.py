@@ -15,11 +15,22 @@ class KnapsackInstance:
 
     @staticmethod
     def from_string(string: str) -> "KnapsackInstance":
-        """ """
+        """ 
+        Creates an instance from the content of an instance file
+        """
         W: list[int] = []
         V: list[int] = []
         C: int = 0
-
+        
+        lines = [x.strip() for x in string.split('\n') if x != '']
+        
+        n, C = [int(x) for x in lines[0].split(' ')]
+        
+        for line in lines[1:]:
+            w, v = [int(x) for x in line.split(' ')]
+            W.append(w)
+            V.append(v)
+        
         return KnapsackInstance(W, V, C)
 
     @staticmethod
