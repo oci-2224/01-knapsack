@@ -34,7 +34,7 @@ class KnapsackInstance:
     def load_instance_data(instance_name: str) -> str:
         src_dir: str = os.path.dirname(__file__)
         file_path: str = os.path.join(src_dir, "test_instances", instance_name)
-        with open(file_path, 'r') as instance_file:
+        with open(file_path, "r") as instance_file:
             return instance_file.read()
 
     @staticmethod
@@ -76,24 +76,24 @@ class KnapsackSolver:
         # 0-1 decision variables
         self._X: list[int] = [0] * self._inst.size
 
-    def solve(self) -> list[int]:
+    def solve(self) -> tuple[int, ...]:
         """
         Solves the loaded instance and returns the assignment to the decision
         variables
         """
         raise NotImplementedError
 
-    def weight(self, X: list[int]) -> int:
+    def weight(self, X: tuple[int, ...]) -> int:
         """
         Computes the total volume of the objects contained in the solution X
         """
         return sum(w * x for w, x in zip(self._inst.W, X))
 
-    def value(self, X: list[int]) -> int:
+    def value(self, X: tuple[int, ...]) -> int:
         """
         Computes the total value of the objects contained in the solution X
         """
-        return sum(v * x for v, x in zip(self._inst.W, X))
+        return sum(v * x for v, x in zip(self._inst.V, X))
 
 
 try:
