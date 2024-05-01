@@ -8,14 +8,14 @@ class GreedyKnapsackSolver(KnapsackSolver):
     """
     >>> kp = KnapsackInstance(W=[13, 13, 13, 10, 24, 11], V=[2600, 2600, 2600, 500, 4500, 960], C=50)
     >>> gs = GreedyKnapsackSolver(kp)
-    >>> X_sub_optimal = gs.solve()
-    >>> X_sub_optimal
+    >>> X = gs.solve()
+    >>> X
     (1, 1, 1, 0, 0, 0)
-    >>> gs.value(X_sub_optimal)
+    >>> gs.value(X)
     7800
-    >>> gs.weight(X_sub_optimal)
+    >>> gs.weight(X)
     39
-    >>> gs.weight(X_sub_optimal) <= gs._inst.C
+    >>> gs.weight(X) <= gs._inst.C
     True
 
     """
